@@ -12,9 +12,8 @@ func FilterMinAge(list []Person, minAge int) []Person {
 	// HINWEIS: Verwenden Sie die Funktion FilterList.
 	// Übergeben Sie ihr eine Funktion, die für eine Person p
 	// überprüft, ob sie mindestens das Alter minAge hat.
-	return FilterList(list, func(p Person) bool {
-		return p.Age >= minAge
-	})
+	// TODO
+	return []Person{}
 }
 
 // FilterLongNames erwartet eine Liste von Personen und eine Mindestlänge.
@@ -24,6 +23,7 @@ func FilterLongNames(list []Person, minLength int) []Person {
 	// HINWEIS: Verwenden Sie die Funktion FilterList.
 	// Übergeben Sie ihr eine Funktion, die für eine Person p
 	// überprüft, ob ihr Name wenigstens minLength Zeichen hat.
+	// TODO
 	return []Person{}
 }
 
@@ -34,6 +34,7 @@ func FilterNamePrefix(list []Person, prefix string) []Person {
 	// HINWEIS: Verwenden Sie die Funktion FilterList.
 	// Übergeben Sie ihr eine Funktion, die für eine Person p
 	// überprüft, ob ihr Name mit prefix beginnt.
+	// TODO
 	return []Person{}
 }
 
@@ -44,6 +45,7 @@ func FilterChildren(list []Person) []Person {
 	// HINWEIS: Verwenden Sie die Funktion FilterList.
 	// Übergeben Sie ihr eine Funktion, die für eine Person p
 	// überprüft, ob ihr Alter höchstens 13 ist.
+	// TODO
 	return []Person{}
 }
 
@@ -52,5 +54,6 @@ func FilterChildren(list []Person) []Person {
 // die höchstens 13 Jahre alt sind und deren Name mindestens die angegebene Länge hat.
 func FilterChildrenWithLongNames(list []Person, minLength int) []Person {
 	// HINWEIS: Kombinieren Sie geeignete Funktionen, die Sie bereits geschrieben haben.
+	// TODO
 	return []Person{}
 }

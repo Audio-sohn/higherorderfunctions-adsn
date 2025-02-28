@@ -9,7 +9,22 @@ type Person struct {
 // FilterMinAge liefert eine neue Liste, die nur die Personen der ursprünglichen Liste enthält,
 // die mindestens das angegebene Alter haben.
 func FilterMinAge(list []Person, minAge int) []Person {
-	// TODO
+
+	// rekursionsanker
+	if len(list) == 0 {
+		return nil
+	}
+
+	// wenn alter ausreichend, element verwenden und fortschreiten
+	if list[0].Age >= minAge {
+
+		return append([]Person{list[0]}, FilterMinAge(list[1:], minAge)...)
+
+	}
+
+	// wenn nicht, element überspringen
+	return append([]Person{}, FilterMinAge(list[1:], minAge)...)
+
 }
 
 // FilterLongNames erwartet eine Liste von Personen und eine Mindestlänge.

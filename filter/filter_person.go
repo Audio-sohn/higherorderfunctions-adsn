@@ -12,20 +12,12 @@ type Person struct {
 // die mindestens das angegebene Alter haben.
 func FilterMinAge(list []Person, minAge int) []Person {
 
-	// rekursionsanker
-	if len(list) == 0 {
-		return nil
+	predicate := func(x Person) bool {
+		return x.Age >= minAge
 	}
 
 	// wenn alter ausreichend, element verwenden und fortschreiten
-	if list[0].Age >= minAge {
-
-		return append([]Person{list[0]}, FilterMinAge(list[1:], minAge)...)
-
-	}
-
-	// wenn nicht, element überspringen
-	return append([]Person{}, FilterMinAge(list[1:], minAge)...)
+	return FilterList(list, predicate)
 
 }
 
@@ -34,19 +26,15 @@ func FilterMinAge(list []Person, minAge int) []Person {
 // deren Name mindestens die angegebene Länge hat.
 func FilterLongNames(list []Person, minLength int) []Person {
 	// rekursionsanker
-	if len(list) == 0 {
-		return nil
-	}
 
-	// wenn länge ausreichend, element verwenden und fortschreiten
-	if len(list[0].Name) >= minLength {
+	predicate := func(x Person) bool {
 
-		return append([]Person{list[0]}, FilterLongNames(list[1:], minLength)...)
+		return len(x.Name) >= minLength
 
 	}
 
-	// wenn nicht, element überspringen
-	return append([]Person{}, FilterLongNames(list[1:], minLength)...)
+	return FilterList(list, predicate)
+
 }
 
 // FilterNamePrefix erwartet eine Liste von Personen und einen Namenspräfix.
@@ -54,19 +42,14 @@ func FilterLongNames(list []Person, minLength int) []Person {
 // deren Name mit dem angegebenen Präfix beginnt.
 func FilterNamePrefix(list []Person, prefix string) []Person {
 	// rekursionsanker
-	if len(list) == 0 {
-		return nil
-	}
 
-	// wenn länge ausreichend, element verwenden und fortschreiten
-	if strings.HasPrefix(list[0].Name, prefix) {
+	predicate := func(x Person) bool {
 
-		return append([]Person{list[0]}, FilterNamePrefix(list[1:], prefix)...)
+		return strings.HasPrefix(x.Name, prefix)
 
 	}
 
-	// wenn nicht, element überspringen
-	return append([]Person{}, FilterNamePrefix(list[1:], prefix)...)
+	return FilterList(list, predicate)
 
 }
 
@@ -77,20 +60,13 @@ func FilterChildren(list []Person) []Person {
 
 	minAge := 13
 
-	if len(list) == 0 {
-		return nil
-	}
+	predicate := func(x Person) bool {
 
-	// wenn alter ausreichend, element verwenden und fortschreiten
-	if list[0].Age <= minAge {
-
-		return append([]Person{list[0]}, FilterChildren(list[1:])...)
+		return x.Age <= minAge
 
 	}
 
-	// wenn nicht, element überspringen
-	return append([]Person{}, FilterChildren(list[1:])...)
-
+	return FilterList(list, predicate)
 }
 
 // FilterChildrenWithLongNames erwartet eine Liste von Personen und eine Mindestlänge.
